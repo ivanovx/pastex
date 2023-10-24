@@ -21,7 +21,7 @@ const lang = (filename: string) =>
   EXT_MAP[ext(filename)]?.toLowerCase() || `plain`
 
 export const getServerSideProps = mw3(
-  zquery(z.object({ id: z.string().uuid() })),
+  zquery(z.object({ id: z.string() })),
   withToken,
   async (_, { query, token }) => {
     const { id } = query

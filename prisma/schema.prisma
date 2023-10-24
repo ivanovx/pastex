@@ -8,7 +8,7 @@ generator client {
 
 datasource db {
   provider   = "mongodb"
-  url        = "mongodb+srv://ivanovx:nu1Py4KBge6tBtCZ@pastex.8ikq4xa.mongodb.net/?retryWrites=true&w=majority"
+  url        = "mongodb+srv://ivanovx:nu1Py4KBge6tBtCZ@pastex.8ikq4xa.mongodb.net/pastexpro?retryWrites=true&w=majority"
 }
 
 model Paste {

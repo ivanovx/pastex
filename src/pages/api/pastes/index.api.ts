@@ -1,4 +1,4 @@
-import * as uuid from "uuid"
+//import * as uuid from "uuid"
 import { restHandler } from "@/rest/http-methods"
 import { withToken, zbody, zquery } from "@/rest/middleware/api"
 import * as schemas from "./schemas"
@@ -15,10 +15,10 @@ const POST = mw3(
     const paste = await db.paste.create({
       data: {
         ...rest,
-        id: uuid.v4(),
+       // id: uuid.v4(),
         authorId: token?.sub,
         files: {
-          create: files.map(f => ({ ...f, id: uuid.v4() })),
+          create: files.map(f => ({ ...f, /*id: uuid.v4()*/ })),
         },
       },
     })
