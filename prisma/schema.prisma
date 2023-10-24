@@ -1,0 +1,109 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["views"]
+}
+
+datasource db {
+  provider   = "mongodb"
+  url        = "mongodb+srv://ivanovx:nu1Py4KBge6tBtCZ@pastex.8ikq4xa.mongodb.net/?retryWrites=true&w=majority"
+}
+
+model Paste {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  public    Boolean  @default(true)
+  description String?
+
+  authorId String?
+  author   User?   @relation(fields: [authorId], references: [id])
+
+  files    File[]
+
+  @@map("pastes")
+}
+
+model File {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String 
+  content   String 
+  pasteId   String   @db.ObjectId
+  paste     Paste    @relation(fields: [pasteId], references: [id])
+
+  @@unique([pasteId, name])
+  @@map("files")
+}
+
+model Account {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? 
+  access_token      String? 
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? 
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model User {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  pastes        Paste[]
+  preferences   UserPrefs?
+  stats         UserStats?
+
+  @@map("users")
+}
+
+model UserPrefs {
+  userId String @id @default(auto()) @map("_id") @db.ObjectId
+  prismTheme String @default("tomorrow")
+  uiTheme String @default("dark")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("user_prefs")
+}
+
+model VerificationToken {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+view UserStats {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  totalPastesCount Int
+
+  langs Json
+  user User @relation(fields: [id], references: [id])
+
+  @@map("user_stats")
+}
+
+model Metadata {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userStatsUpdatedAt DateTime @default(now())
+}

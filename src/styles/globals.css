@@ -1,0 +1,35 @@
+ul,
+ol {
+  list-style: none;
+}
+
+html,
+body,
+main,
+body > * {
+  height: 100%;
+}
+
+.invis {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  opacity: 0;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
