@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:generate": "npx prisma generate",
-    "tsc": "tsc"
+    "db:generate": "npx prisma generate"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -21,11 +20,7 @@
     "@next/font": "13.1.6",
     "@prisma/client": "5.5.0",
     "@tanstack/react-query": "^4.24.4",
-    "@types/react": "18.0.27",
-    "@types/react-dom": "18.0.10",
     "date-fns": "^2.29.3",
-    "eslint": "8.33.0",
-    "eslint-config-next": "13.1.6",
     "ky": "^0.33.3",
     "language-colors": "^2.1.41",
     "next": "13.1.6",
@@ -36,31 +31,15 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.0",
     "react-select": "^5.7.0",
-    "typescript": "^4.9.5",
     "zod": "^3.20.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^13.3.0",
     "@types/node": "^18.13.0",
     "@types/prismjs": "^1.26.0",
-    "@typescript-eslint/eslint-plugin": "^5.52.0",
-    "@typescript-eslint/parser": "^5.52.0",
     "copy-webpack-plugin": "^11.0.0",
-    "lint-staged": "^13.1.2",
-    "node-actionlint": "^1.2.2",
-    "prettier": "^2.8.3",
-    "ts-node": "^10.9.1",
-    "tsconfig-paths": "^4.1.2"
-  },
-  "lint-staged": {
-    "{src,.,prisma}/**/*.{ts,tsx,js}": [
-      "prettier --write -u",
-      "eslint --fix"
-    ],
-    ".eslintrc.js": "prettier --write -u",
-    ".github/workflows/*.yml": [
-      "prettier --write -u",
-      "node-actionlint"
-    ]
+    "@types/react": "18.0.27",
+    "@types/react-dom": "18.0.10",
+    "typescript": "^4.9.5"
   }
 }
