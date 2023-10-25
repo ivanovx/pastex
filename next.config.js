@@ -2,7 +2,6 @@
 // with Sentry.
 // https://nextjs.org/docs/api-reference/next.config.js/introduction
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
-const { withSentryConfig } = require(`@sentry/nextjs`)
 const CopyPlugin = require(`copy-webpack-plugin`)
 const withBundleAnalyzer = require(`@next/bundle-analyzer`)
 
@@ -36,14 +35,3 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-
-/*
-module.exports = withSentryConfig(
-  module.exports,
-  { silent: true },
-  { hideSourcemaps: true }
-)
-
-module.exports = withBundleAnalyzer({
-  enabled: process.env.ANALYZE === `true`,
-})(module.exports)*/
