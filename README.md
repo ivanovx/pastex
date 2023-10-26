@@ -1,1 +1,1 @@
-# pastex
+# PasteX
