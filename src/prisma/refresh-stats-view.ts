@@ -12,7 +12,7 @@ export const refreshUserStats = async (force = false) => {
     return
 
   console.log(`REFRESHING MATERIALIZED VIEW`)
- // await db.$executeRaw`REFRESH MATERIALIZED VIEW user_stats`
+  //await db.$executeRaw`REFRESH MATERIALIZED VIEW user_stats`
   const args = { data: { userStatsUpdatedAt: new Date() } }
   return meta ? db.metadata.updateMany(args) : db.metadata.create(args)
 }
