@@ -6,8 +6,8 @@ import { db } from "@/prisma/client"
 export const authOptions: AuthOptions = {
     providers: [
         GithubProvider({
-            clientId: "daad249778a9526c116a", //process.env.GITHUB_ID!,
-            clientSecret: "7605f7455b0feb0fbc3ad23834ce9fce0edd63ad"  //process.env.GITHUB_SECRET!,
+            clientId: process.env.GITHUB_ID!,
+            clientSecret: process.env.GITHUB_SECRET!,
         }),
     ],
 
