@@ -18,7 +18,7 @@ export default function Create() {
   const createPaste = useMutation(
     (p: Create) => ky.post(`/api/pastes`, { json: p }).json<PostResp>(),
     {
-      onSuccess: ({ id }) => {
+      onSuccess: ({ id }: any) => {
         toast({
           severity: `success`,
           children: `Paste created, redirecting you in a sec...`,
